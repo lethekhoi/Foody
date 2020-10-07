@@ -11,11 +11,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".View.TrangChuActivity"></activity>
-
-
-
-
+        <activity android:name=".View.DangKiActivity"></activity>
+        <activity android:name=".View.TrangChuActivity" />
         <activity android:name=".View.DangNhapActivity" />
         <activity android:name=".View.SplashScreenActivity">
             <intent-filter>

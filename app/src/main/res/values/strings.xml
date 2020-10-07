@@ -7,7 +7,16 @@
     <string name="matkhau">Mật khẩu</string>
     <string name="dangnhap">Đăng Nhập</string>
     <string name="hoac">Hoặc</string>
-
-
+    <string name="quenmatkhau">Quên mật khẩu ?</string>
+    <string name="dangki">Đăng kí</string>
+    <string name="nhaplaimk">Nhập lại mật khẩu</string>
+    <string name="emailempty">Email không được để trống</string>
+    <string name="emailwrong">Nhập địa chỉ email hợp lệ</string>
+    <string name="matkhauempty">Mật khẩu không được để trống</string>
+    <string name="matkhaunhaplaiempty">Mật khẩu nhập lại không được để trống</string>
+    <string name="matkhaunhapnotequal">Mật khẩu nhập lại không trùng khớp</string>
+    <string name="matkhaungan">Mật khẩu không được ngắn hơn 6 kí tự</string>
+    <string name="dangkithanhcong">Đăng kí thành công</string>
+    <string name="dangxuli">Đang xử lí</string>
 
 </resources>

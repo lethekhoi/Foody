@@ -29,6 +29,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 } finally {
                     Intent iDangNhap = new Intent(SplashScreenActivity.this, DangNhapActivity.class);
                     startActivity(iDangNhap);
+                    finish();
                 }
                 ;
             }
