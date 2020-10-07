@@ -2,6 +2,7 @@ package com.example.foody.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
@@ -18,7 +19,21 @@ public class SplashScreenActivity extends AppCompatActivity {
         AnhXa();
         init();
 
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    Thread.sleep(3000);
+                } catch (Exception e) {
 
+                } finally {
+                    Intent iDangNhap = new Intent(SplashScreenActivity.this, DangNhapActivity.class);
+                    startActivity(iDangNhap);
+                }
+                ;
+            }
+        });
+        thread.start();
 
     }
 

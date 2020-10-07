@@ -3,4 +3,11 @@
     <string name="phienban">Phiên bản</string>
     <string name="dangtai">Đang tải ...</string>
     <string name="tencongty">Foody</string>
+    <string name="email">Email</string>
+    <string name="matkhau">Mật khẩu</string>
+    <string name="dangnhap">Đăng Nhập</string>
+    <string name="hoac">Hoặc</string>
+
+
+
 </resources>

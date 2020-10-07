@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/backgrounddangnhap"
+    android:gravity="center"
+    tools:context=".View.DangNhapActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/transparentBackgroudDangNhap"
+        android:orientation="vertical"
+        android:paddingLeft="30dp"
+        android:paddingRight="30dp">
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="200dp"
+            android:layout_height="100dp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="50dp"
+            app:srcCompat="@drawable/foodytext" />
+
+        <EditText
+            android:id="@+id/edEmailDN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/colorAccent"
+            android:drawableLeft="@drawable/ic_perm_identity_white_24dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/email"
+            android:inputType="textPersonName"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent" />
+
+        <EditText
+            android:id="@+id/edPasswordDN"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="15dp"
+            android:backgroundTint="@color/colorAccent"
+            android:drawableLeft="@drawable/ic_lock_outline_white_24dp"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:hint="@string/matkhau"
+            android:inputType="textPersonName|textPassword"
+            android:textColor="@color/colorAccent"
+            android:textColorHint="@color/colorAccent" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_gravity="center"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="15dp"
+            android:background="@drawable/radius_button"
+            android:drawableLeft="@drawable/ic_exit_to_app_white_24dp"
+            android:drawablePadding="10dp"
+            android:drawableTint="@color/colorPrimaryDark"
+            android:paddingLeft="60dp"
+            android:paddingRight="60dp"
+            android:text="@string/dangnhap"
+            android:textColor="@color/colorPrimaryDark" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <View
+                    android:layout_marginRight="10dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorAccent"/>
+                <TextView
+                    android:textSize="16sp"
+                    android:textColor="@color/colorAccent"
+                    android:text="@string/hoac"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+                <View
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="@color/colorAccent"/>
+
+            </LinearLayout>
+
+        <com.google.android.gms.common.SignInButton
+            android:id="@+id/sign_in_button"
+            android:layout_marginBottom="20dp"
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+<!--        <com.facebook.login.widget.LoginButton-->
+<!--            android:id="@+id/sign_in_facebook"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:layout_marginLeft="5dp"-->
+<!--            android:layout_marginRight="5dp"-->
+<!--            android:paddingLeft="5dp"-->
+<!--            android:paddingTop="15dp"-->
+<!--            android:paddingRight="5dp"-->
+<!--            android:paddingBottom="15dp"-->
+<!--            android:textColor="@color/colorAccent" />-->
+
+    </LinearLayout>
+
+</RelativeLayout>
