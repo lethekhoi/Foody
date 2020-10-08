@@ -11,6 +11,7 @@ import android.content.SharedPreferences;
 import android.graphics.LinearGradient;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -48,7 +49,7 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     Button btnDangNhap, btnFacebook;
     TextView txtDangKyMoi, txtQuenMatKhau;
     EditText edEmail, edPassword;
-
+    String email, matkhau;
     GoogleApiClient apiClient;
     public static int REQUESTCODE_DANGNHAP_GOOGLE = 99;
     public static int KIEMTRA_PROVIDER_DANGNHAP = 0;
@@ -63,10 +64,14 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         txtQuenMatKhau= findViewById(R.id.txtQuenMatKhau);
         firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth.signOut();
+        btnDangNhap=findViewById(R.id.buttonDangNhap);
         btnDangNhapGoogle = findViewById(R.id.sign_in_button);
+        edEmail=findViewById(R.id.edEmailDN);
+        edPassword=findViewById(R.id.edPasswordDN);
         btnDangNhapGoogle.setOnClickListener(this);
         txtDangKyMoi.setOnClickListener(this);
         txtQuenMatKhau.setOnClickListener(this);
+        btnDangNhap.setOnClickListener(this);
         TaoClientDangNhapGoogle();
 
 
@@ -153,7 +158,28 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                 Intent iDangKi= new Intent(DangNhapActivity.this, DangKiActivity.class);
                 startActivity(iDangKi);
                 break;
+            case R.id.buttonDangNhap:
+                DangNhap();
+                break;
+            }
+    }
 
+    private void DangNhap() {
+        email= edEmail.getText().toString().trim();
+        matkhau=edPassword.getText().toString().trim();
+
+        if (!validateEmail(email)|!validatePassword(matkhau)){
+            return;
+        }
+        else {
+            firebaseAuth.signInWithEmailAndPassword(email, matkhau).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
+                    if (!task.isSuccessful()) {
+                        Toast.makeText(DangNhapActivity.this, getString(R.string.dangnhapthatbai), Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
     //end
@@ -173,4 +199,29 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
         }
     }
     //End
+    private boolean validateEmail(String email) {
+        if (email.isEmpty()) {
+            edEmail.setError(getString(R.string.emailempty));
+            return false;
+        } else if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            edEmail.setError(getString(R.string.emailwrong));
+            return false;
+        } else {
+            edEmail.setError(null);
+            return true;
+        }
+    }
+
+    private boolean validatePassword(String matkhau) {
+        if (matkhau.isEmpty()) {
+            edPassword.setError(getString(R.string.matkhauempty));
+            return false;
+        } else if (matkhau.trim().length() < 6) {
+            edPassword.setError(getString(R.string.matkhaungan));
+            return false;
+        } else {
+            edPassword.setError(null);
+            return true;
+        }
+    }
 }

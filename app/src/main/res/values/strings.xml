@@ -18,5 +18,6 @@
     <string name="matkhaungan">Mật khẩu không được ngắn hơn 6 kí tự</string>
     <string name="dangkithanhcong">Đăng kí thành công</string>
     <string name="dangxuli">Đang xử lí</string>
+    <string name="dangnhapthatbai">Đăng nhập thất bại</string>
 
 </resources>
