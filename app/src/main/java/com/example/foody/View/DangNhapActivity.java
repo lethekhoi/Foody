@@ -161,6 +161,10 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
             case R.id.buttonDangNhap:
                 DangNhap();
                 break;
+            case  R.id.txtQuenMatKhau:
+                Intent iQuenMatKhau= new Intent(DangNhapActivity.this, QuenMatKhauActivity.class);
+                startActivity(iQuenMatKhau);
+                break;
             }
     }
 

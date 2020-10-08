@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/backgrounddangnhap"
     android:gravity="center"
-    tools:context=".View.DangNhapActivity">
+    tools:context=".View.DangKiActivity">
 <FrameLayout
     android:background="@color/transparentBackgroudDangNhap"
     android:layout_width="match_parent"

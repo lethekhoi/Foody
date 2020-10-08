@@ -19,5 +19,9 @@
     <string name="dangkithanhcong">Đăng kí thành công</string>
     <string name="dangxuli">Đang xử lí</string>
     <string name="dangnhapthatbai">Đăng nhập thất bại</string>
-
+    <string name="khoiphucmatkhau">Khôi phục mật khẩu</string>
+    <string name="chuoikhoiphucmatkhau">Vui lòng nhập địa chỉ email vào khung bên dưới để khôi phục mật khẩu</string>
+    <string name="khoiphuc">Khôi phục</string>
+    <string name="khongphaithanhvien">Bạn không phải là thành viên ? </string>
+    <string name="thongbaoguiemailthanhcong">Gửi email thành công</string>
 </resources>
