@@ -24,4 +24,21 @@
     <string name="khoiphuc">Khôi phục</string>
     <string name="khongphaithanhvien">Bạn không phải là thành viên ? </string>
     <string name="thongbaoguiemailthanhcong">Gửi email thành công</string>
+    <string name="angi">Ăn gì</string>
+    <string name="odau">Ở đâu</string>
+    <string name="moinhat">Mới nhất</string>
+    <string name="danhmuc">Danh mục</string>
+    <string name="khuvuc">Khu vực</string>
+    <string name="gantoi">Gần tôi</string>
+    <string name="giaohang">Giao hàng</string>
+    <string name="gameandfun">Game and fun</string>
+    <string name="danhgia">Đánh giá</string>
+    <string name="blogs">Blogs</string>
+    <string name="topmember">Top thành viên</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="datmon">Đặt món</string>
+    <string name="showmore"> Show more</string>
+    <string name="showless"> Show less</string>
+
 </resources>

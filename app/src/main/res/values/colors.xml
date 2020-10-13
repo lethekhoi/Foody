@@ -4,4 +4,7 @@
     <color name="colorPrimaryDark">#cd2027</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="transparentBackgroudDangNhap">#E6EC5A60</color>
+    <color name="colorBlack">#E6000000</color>
+    <color name="colorBackgroundTrangChu">#CCC</color>
+
 </resources>

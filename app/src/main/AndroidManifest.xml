@@ -3,6 +3,9 @@
     package="com.example.foody">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
 
     <application
         android:allowBackup="true"
@@ -11,6 +14,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyATy3FUMa-dCTP5XuxKHs-Oy2ApxxxaWG4">
+
+        </meta-data>
         <activity android:name=".View.QuenMatKhauActivity"></activity>
         <activity android:name=".View.DangKiActivity" />
         <activity android:name=".View.TrangChuActivity" />

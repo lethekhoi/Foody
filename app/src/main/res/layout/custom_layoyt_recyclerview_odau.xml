@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <TextView
+                android:id="@+id/txtDiemTrungBinh"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/background_cycle"
+                android:gravity="center"
+                android:text="6.8"
+                android:textColor="@color/colorAccent" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtTenQuanAnOdau"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GoGi House"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDiaChiQuanAnODau"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GoGi House" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtKhoangCach"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="6.6 km" />
+        </LinearLayout>
+
+
+        <ImageView
+            android:id="@+id/imgHinhQuanAn"
+            android:layout_width="match_parent"
+            android:layout_height="180dp"
+            android:padding="5dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/hinhtest" />
+
+
+        <Button
+            android:id="@+id/btnDatMonODau"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/button_radius"
+            android:drawableTop="@drawable/order"
+            android:padding="5dp"
+            android:text="@string/datmon"
+            android:textAllCaps="false"
+            android:textColor="@color/colorAccent"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/containerBinhLuan1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cicleImageUser1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/backgrounddangnhap"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="2dp" />
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+
+                    android:id="@+id/txtTieuDeBinhLuan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GoGi House"
+                    android:textStyle="bold" />
+
+                <com.borjabravo.readmoretextview.ReadMoreTextView
+                    android:id="@+id/txtNoiDungBinhLuan1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GoGi House"
+                    app:colorClickableText="@color/colorPrimaryDark"
+                    app:trimCollapsedText="@string/showmore"
+                    app:trimExpandedText="@string/showless"
+                    app:trimLines="3"
+                    app:trimMode="trimModeLine" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtDiemBinhLuan1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="8.5" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/containerBinhLuan2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/cicleImageUser2"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:scaleType="centerCrop"
+                android:src="@drawable/backgrounddangnhap"
+                app:civ_border_color="@color/colorAccent"
+                app:civ_border_width="2dp" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/txtTieuDeBinhLuan2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="GoGi House"
+                    android:textStyle="bold" />
+
+                <com.borjabravo.readmoretextview.ReadMoreTextView
+                    android:id="@+id/txtNoiDungBinhLuan2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:text="GoGi House"
+                    app:colorClickableText="@color/colorPrimaryDark"
+                    app:trimCollapsedText="@string/showmore"
+                    app:trimExpandedText="@string/showless" />
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/txtDiemBinhLuan2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="7.9" />
+        </LinearLayout>
+
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="50dp"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtTotalBinhLuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:drawableLeft="@drawable/ic_insert_comment_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="123"
+                android:textAlignment="center" />
+
+            <TextView
+                android:id="@+id/txtTongHinhBinhLuan"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:drawableLeft="@drawable/ic_photo_camera_black_24dp"
+                android:drawablePadding="5dp"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="0"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>
