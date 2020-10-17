@@ -1,5 +1,7 @@
 package com.example.foody.Adapter;
 
+import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.util.Log;
@@ -12,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.borjabravo.readmoretextview.ReadMoreTextView;
@@ -19,6 +22,7 @@ import com.example.foody.Model.BinhLuanModel;
 import com.example.foody.Model.ChiNhanhQuanAnModel;
 import com.example.foody.Model.QuanAnModel;
 import com.example.foody.R;
+import com.example.foody.View.ChiTietQuanAnActivity;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -32,10 +36,12 @@ public class AdapterRecycleODau extends RecyclerView.Adapter<AdapterRecycleODau.
     FirebaseStorage firebaseStorage;
     List<QuanAnModel> quanAnModelList;
     int resource;
+    Context context;
 
-    public AdapterRecycleODau(List<QuanAnModel> quanAnModelList, int resource) {
+    public AdapterRecycleODau(Context context, List<QuanAnModel> quanAnModelList, int resource) {
         this.quanAnModelList = quanAnModelList;
         this.resource = resource;
+        this.context = context;
         firebaseStorage = FirebaseStorage.getInstance();
     }
 
@@ -49,7 +55,7 @@ public class AdapterRecycleODau extends RecyclerView.Adapter<AdapterRecycleODau.
 
     @Override
     public void onBindViewHolder(@NonNull final ViewHolder holder, int position) {
-        QuanAnModel quanAnModel = quanAnModelList.get(position);
+        final QuanAnModel quanAnModel = quanAnModelList.get(position);
         //nút giao hàng
         holder.txtTenQuanAnODau.setText(quanAnModel.getTenquanan());
         if (quanAnModel.isGiaohang()) {
@@ -59,15 +65,8 @@ public class AdapterRecycleODau extends RecyclerView.Adapter<AdapterRecycleODau.
         }
         //end nút giao hàng
         //hình quán ăn
-        if (quanAnModel.getHinhquanan().size() > 0) {
-            StorageReference storageHinhanh = firebaseStorage.getReference().child("hinhquanan").child(quanAnModel.getHinhquanan().get(0));
-            storageHinhanh.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    holder.imgHinhQuanAn.setImageBitmap(bitmap);
-                }
-            });
+        if (quanAnModel.getBitmapList().size() > 0) {
+            holder.imgHinhQuanAn.setImageBitmap(quanAnModel.getBitmapList().get(0));
         }
         //end hình quán ăn
 
@@ -123,9 +122,21 @@ public class AdapterRecycleODau extends RecyclerView.Adapter<AdapterRecycleODau.
 
             int vitrigannhat = viTriGanNhat(quanAnModel.getChiNhanhQuanAnModelList());
             holder.txtDiaChiQuanAnODau.setText(quanAnModel.getChiNhanhQuanAnModelList().get(vitrigannhat).getDiachi());
-            holder.txtKhoangCach.setText(String.format("%.1f", quanAnModel.getChiNhanhQuanAnModelList().get(vitrigannhat).getKhoangcach() ) + " km");
+            Log.d("k", String.format("%.1f", quanAnModel.getChiNhanhQuanAnModelList().get(vitrigannhat).getKhoangcach()) + " km");
+            holder.txtKhoangCach.setText(String.format("%.1f", quanAnModel.getChiNhanhQuanAnModelList().get(vitrigannhat).getKhoangcach()) + " km");
 
         }
+
+
+        holder.cardViewQuanAn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iChiTietQuanAn = new Intent(context, ChiTietQuanAnActivity.class);
+                iChiTietQuanAn.putExtra("quanan", quanAnModel);
+                context.startActivity(iChiTietQuanAn);
+            }
+        });
+
 
     }
 
@@ -166,10 +177,12 @@ public class AdapterRecycleODau extends RecyclerView.Adapter<AdapterRecycleODau.
         CircleImageView circleImageView1, circleImageView2;
         Button btnDatMonODau;
         ImageView imgHinhQuanAn;
+        CardView cardViewQuanAn;
         LinearLayout containerBinhLuan1, containerBinhLuan2;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            cardViewQuanAn = itemView.findViewById(R.id.cardViewQuanAn);
             txtTenQuanAnODau = itemView.findViewById(R.id.txtTenQuanAnOdau);
             btnDatMonODau = itemView.findViewById(R.id.btnDatMonODau);
             imgHinhQuanAn = itemView.findViewById(R.id.imgHinhQuanAn);

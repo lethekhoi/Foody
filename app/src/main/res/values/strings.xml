@@ -40,5 +40,18 @@
     <string name="datmon">Đặt món</string>
     <string name="showmore"> Show more</string>
     <string name="showless"> Show less</string>
-
+    <string name="thich">Thích</string>
+    <string name="binhluan">Bình luận</string>
+    <string name="mayanh">Máy ảnh</string>
+    <string name="vitri">Check-in</string>
+    <string name="chise">Chia sẻ</string>
+    <string name="taianh">Tải ảnh</string>
+    <string name="luulai">Lưu lại</string>
+    <string name="dongcua">Đã đóng cửa</string>
+    <string name="mocua">Đang mở cửa</string>
+    <string name="chitietbinhluan">Chi tiết bình luận</string>
+    <string name="nhaptenwifi">Nhập tên wifi</string>
+    <string name="nhapmatkhauwifi">Nhập mật khẩu wifi</string>
+    <string name="themwifithanhcong">Thêm Wifi thành công</string>
+    <string name="themwifi"><font color="#030bfc">"Thêm mật khẩu Wifi"</font></string>
 </resources>

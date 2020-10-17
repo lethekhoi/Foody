@@ -6,5 +6,8 @@
     <color name="transparentBackgroudDangNhap">#E6EC5A60</color>
     <color name="colorBlack">#E6000000</color>
     <color name="colorBackgroundTrangChu">#CCC</color>
-
+    <color name="colorChiTietBlack">#353434</color>
+    <color name="colorGreen">#14E114</color>
+    <color name="tranparentWhite">#CCFFFFFF</color>
+    <color name="blue">#030bfc</color>
 </resources>

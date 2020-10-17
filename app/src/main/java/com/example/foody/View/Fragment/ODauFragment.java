@@ -20,6 +20,8 @@ import com.example.foody.Controller.ODauController;
 import com.example.foody.Model.QuanAnModel;
 import com.example.foody.R;
 
+import androidx.core.widget.NestedScrollView;
+
 import java.util.List;
 
 
@@ -27,6 +29,7 @@ public class ODauFragment extends Fragment {
     RecyclerView recyclerViewODau;
     ODauController oDauController;
     ProgressBar progressBar;
+    NestedScrollView nestedScrollView;
     SharedPreferences sharedPreferences;
 
     @Nullable
@@ -35,18 +38,20 @@ public class ODauFragment extends Fragment {
         View view = inflater.inflate(R.layout.layout_fragment_odau, container, false);
         recyclerViewODau = view.findViewById(R.id.recyclerViewODau);
         progressBar = view.findViewById(R.id.ODauProgressBar);
+        nestedScrollView = view.findViewById(R.id.nestScrollViewODau);
+        sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
+        Location vitrihientai = new Location("");
+        vitrihientai.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude", "0")));
+        vitrihientai.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude", "0")));
+        oDauController = new ODauController(getContext(), vitrihientai);
+        oDauController.getDanhSachQuanAnController(getContext(), nestedScrollView, recyclerViewODau, progressBar);
         return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
-        sharedPreferences = getContext().getSharedPreferences("toado", Context.MODE_PRIVATE);
-        Location vitrihientai = new Location("");
-        vitrihientai.setLongitude(Double.parseDouble(sharedPreferences.getString("longitude", "0")));
-        vitrihientai.setLatitude(Double.parseDouble(sharedPreferences.getString("latitude", "0")));
-        oDauController = new ODauController(getContext(), vitrihientai);
-        oDauController.getDanhSachQuanAnController(recyclerViewODau, progressBar);
+
 
     }
 }

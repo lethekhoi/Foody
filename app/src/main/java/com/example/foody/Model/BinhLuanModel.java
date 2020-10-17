@@ -1,8 +1,11 @@
 package com.example.foody.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 
-public class BinhLuanModel {
+public class BinhLuanModel implements Parcelable {
     String mauser;
     int chamdiem, luotthich;
     String noidung;
@@ -10,6 +13,29 @@ public class BinhLuanModel {
     String mabinhluan;
     ThanhVienModel thanhVienModel;
     List<String> listHinhBinhLuan;
+
+    protected BinhLuanModel(Parcel in) {
+        mauser = in.readString();
+        chamdiem = in.readInt();
+        luotthich = in.readInt();
+        noidung = in.readString();
+        tieude = in.readString();
+        mabinhluan = in.readString();
+        listHinhBinhLuan = in.createStringArrayList();
+        thanhVienModel = in.readParcelable(ThanhVienModel.class.getClassLoader());
+    }
+
+    public static final Creator<BinhLuanModel> CREATOR = new Creator<BinhLuanModel>() {
+        @Override
+        public BinhLuanModel createFromParcel(Parcel in) {
+            return new BinhLuanModel(in);
+        }
+
+        @Override
+        public BinhLuanModel[] newArray(int size) {
+            return new BinhLuanModel[size];
+        }
+    };
 
     public String getMauser() {
         return mauser;
@@ -85,5 +111,22 @@ public class BinhLuanModel {
 
     public void setThanhVienModel(ThanhVienModel thanhVienModel) {
         this.thanhVienModel = thanhVienModel;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(mauser);
+        parcel.writeInt(chamdiem);
+        parcel.writeInt(luotthich);
+        parcel.writeString(noidung);
+        parcel.writeString(tieude);
+        parcel.writeString(mabinhluan);
+        parcel.writeStringList(listHinhBinhLuan);
+        parcel.writeParcelable(thanhVienModel, i);
     }
 }

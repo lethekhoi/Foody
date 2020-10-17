@@ -34,7 +34,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         AnhXa();
         init();
         sharedPreferences = getSharedPreferences("toado", MODE_PRIVATE);
-        client = LocationServices.getFusedLocationProviderClient(this);
+        client = LocationServices.getFusedLocationProviderClient(SplashScreenActivity.this);
 
 
         Thread thread = new Thread(new Runnable() {
@@ -57,7 +57,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                     }
                     finish();
                 }
-                ;
+
             }
         });
         thread.start();
@@ -82,8 +82,11 @@ public class SplashScreenActivity extends AppCompatActivity {
         });
     }
 
+
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == 44) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
                 getCurrentLocation();

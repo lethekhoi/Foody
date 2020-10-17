@@ -14,12 +14,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".View.PopUpCapNhatWifiActivity"
+            android:label="Cập nhật wifi"
+            android:theme="@style/Theme.AppCompat.Light.Dialog"></activity>
+        <activity android:name=".View.CapNhatDanhSachWifiActivity" />
 
-        <meta-data android:name="com.google.android.geo.API_KEY"
-            android:value="AIzaSyATy3FUMa-dCTP5XuxKHs-Oy2ApxxxaWG4">
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyDrDpf5NLlkQ1TYC_BHgEamGdLKecP3rh0" />
 
-        </meta-data>
-        <activity android:name=".View.QuenMatKhauActivity"></activity>
+        <activity android:name=".View.ChiTietBinhLuanActivity" />
+        <activity android:name=".View.ChiTietQuanAnActivity" />
+        <activity android:name=".View.QuenMatKhauActivity" />
         <activity android:name=".View.DangKiActivity" />
         <activity android:name=".View.TrangChuActivity" />
         <activity android:name=".View.DangNhapActivity" />
