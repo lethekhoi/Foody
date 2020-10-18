@@ -1,8 +1,20 @@
 package com.example.foody.Model;
 
+import android.net.Uri;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
+
+import java.io.File;
 import java.util.List;
 
 public class BinhLuanModel implements Parcelable {
@@ -13,6 +25,7 @@ public class BinhLuanModel implements Parcelable {
     String mabinhluan;
     ThanhVienModel thanhVienModel;
     List<String> listHinhBinhLuan;
+
 
     protected BinhLuanModel(Parcel in) {
         mauser = in.readString();
@@ -128,5 +141,35 @@ public class BinhLuanModel implements Parcelable {
         parcel.writeString(mabinhluan);
         parcel.writeStringList(listHinhBinhLuan);
         parcel.writeParcelable(thanhVienModel, i);
+    }
+
+    public void ThemBinhLuan(String maquanan, BinhLuanModel binhLuanModel, List<Uri> uriList) {
+        DatabaseReference nodeBinhLuan = FirebaseDatabase.getInstance().getReference().child("binhluans");
+        String mabinhluan = nodeBinhLuan.child(maquanan).push().getKey();
+
+        nodeBinhLuan.child(maquanan).child(mabinhluan).setValue(binhLuanModel).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (task.isSuccessful()) {
+                    if (uriList.size() > 0) {
+                        for (Uri uri : uriList) {
+                            StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("hinhquanan/" + uri.getLastPathSegment());
+                            storageReference.putFile(uri).addOnCompleteListener(new OnCompleteListener<UploadTask.TaskSnapshot>() {
+                                @Override
+                                public void onComplete(@NonNull Task<UploadTask.TaskSnapshot> task) {
+
+                                }
+                            });
+                        }
+                    }
+                }
+            }
+        });
+
+        if (uriList.size() > 0) {
+            for (Uri uri : uriList) {
+                FirebaseDatabase.getInstance().getReference().child("hinhanhbinhluans").child(mabinhluan).push().setValue(uri.getLastPathSegment());
+            }
+        }
     }
 }

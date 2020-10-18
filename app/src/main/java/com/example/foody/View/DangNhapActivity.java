@@ -1,7 +1,6 @@
 package com.example.foody.View;
 
 
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
@@ -60,18 +59,19 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dang_nhap);
-        txtDangKyMoi= findViewById(R.id.txtDangKiMoi);
-        txtQuenMatKhau= findViewById(R.id.txtQuenMatKhau);
+        txtDangKyMoi = findViewById(R.id.txtDangKiMoi);
+        txtQuenMatKhau = findViewById(R.id.txtQuenMatKhau);
         firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth.signOut();
-        btnDangNhap=findViewById(R.id.buttonDangNhap);
+        btnDangNhap = findViewById(R.id.buttonDangNhap);
         btnDangNhapGoogle = findViewById(R.id.sign_in_button);
-        edEmail=findViewById(R.id.edEmailDN);
-        edPassword=findViewById(R.id.edPasswordDN);
+        edEmail = findViewById(R.id.edEmailDN);
+        edPassword = findViewById(R.id.edPasswordDN);
         btnDangNhapGoogle.setOnClickListener(this);
         txtDangKyMoi.setOnClickListener(this);
         txtQuenMatKhau.setOnClickListener(this);
         btnDangNhap.setOnClickListener(this);
+
+        sharedPreferences = getSharedPreferences("luudangnhap", MODE_PRIVATE);
         TaoClientDangNhapGoogle();
 
 
@@ -155,27 +155,26 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
                 DangNhapGoogle(apiClient);
                 break;
             case R.id.txtDangKiMoi:
-                Intent iDangKi= new Intent(DangNhapActivity.this, DangKiActivity.class);
+                Intent iDangKi = new Intent(DangNhapActivity.this, DangKiActivity.class);
                 startActivity(iDangKi);
                 break;
             case R.id.buttonDangNhap:
                 DangNhap();
                 break;
-            case  R.id.txtQuenMatKhau:
-                Intent iQuenMatKhau= new Intent(DangNhapActivity.this, QuenMatKhauActivity.class);
+            case R.id.txtQuenMatKhau:
+                Intent iQuenMatKhau = new Intent(DangNhapActivity.this, QuenMatKhauActivity.class);
                 startActivity(iQuenMatKhau);
                 break;
-            }
+        }
     }
 
     private void DangNhap() {
-        email= edEmail.getText().toString().trim();
-        matkhau=edPassword.getText().toString().trim();
+        email = edEmail.getText().toString().trim();
+        matkhau = edPassword.getText().toString().trim();
 
-        if (!validateEmail(email)|!validatePassword(matkhau)){
+        if (!validateEmail(email) | !validatePassword(matkhau)) {
             return;
-        }
-        else {
+        } else {
             firebaseAuth.signInWithEmailAndPassword(email, matkhau).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {
@@ -194,14 +193,16 @@ public class DangNhapActivity extends AppCompatActivity implements GoogleApiClie
     public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
         FirebaseUser user = firebaseAuth.getCurrentUser();
         if (user != null) {
-
-            Log.d("user", user.toString());
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString("mauser", user.getUid());
+            editor.commit();
             Intent iTrangChu = new Intent(this, TrangChuActivity.class);
             startActivity(iTrangChu);
         } else {
 
         }
     }
+
     //End
     private boolean validateEmail(String email) {
         if (email.isEmpty()) {

@@ -27,38 +27,31 @@
             android:background="@color/colorChiTietBlack"
             android:orientation="horizontal">
 
-            <!--            <Button-->
-            <!--                android:layout_width="wrap_content"-->
-            <!--                android:layout_height="wrap_content"-->
-            <!--                android:layout_weight="1"-->
-            <!--                android:background="@color/colorChiTietBlack"-->
-            <!--                android:drawableTop="@drawable/like"-->
-            <!--                android:padding="5px"-->
-            <!--                android:text="@string/thich"-->
-            <!--                android:textAllCaps="false"-->
-            <!--                android:textColor="@color/colorAccent" />-->
 
             <Button
+                android:id="@+id/btnBinhLuan"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/colorChiTietBlack"
                 android:drawableTop="@drawable/ic_comment"
-                android:padding="5px"
+                android:padding="5dp"
                 android:text="@string/binhluan"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textSize="13sp" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:background="@color/colorChiTietBlack"
-                android:drawableTop="@drawable/ic_camera"
+                android:drawableTop="@drawable/ic_photo_cam"
                 android:padding="5px"
                 android:text="@string/mayanh"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textSize="13sp" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -66,10 +59,11 @@
                 android:layout_weight="1"
                 android:background="@color/colorChiTietBlack"
                 android:drawableTop="@drawable/ic_location"
-                android:padding="5px"
+                android:padding="5dp"
                 android:text="@string/vitri"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textSize="13sp" />
 
             <Button
                 android:layout_width="wrap_content"
@@ -77,10 +71,11 @@
                 android:layout_weight="1"
                 android:background="@color/colorChiTietBlack"
                 android:drawableTop="@drawable/ic_share"
-                android:padding="5px"
+                android:padding="5dp"
                 android:text="@string/chise"
                 android:textAllCaps="false"
-                android:textColor="@color/colorAccent" />
+                android:textColor="@color/colorAccent"
+                android:textSize="13sp" />
         </LinearLayout>
 
         <androidx.core.widget.NestedScrollView
@@ -102,15 +97,27 @@
                     android:background="@color/colorAccent"
                     android:orientation="vertical">
 
-                    <ImageView
-                        android:id="@+id/imgHinhQuanAn"
+                    <FrameLayout
                         android:layout_width="match_parent"
-                        android:layout_height="180dp"
-                        android:layout_margin="5dp"
-                        android:scaleType="fitXY"
-                        android:src="@drawable/hinhtest">
+                        android:layout_height="180dp">
 
-                    </ImageView>
+                        <ImageView
+                            android:id="@+id/imgHinhQuanAn"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="5dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/hinhtest">
+
+                        </ImageView>
+
+                        <VideoView
+                            android:layout_gravity="center"
+                            android:id="@+id/videotrailer"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent" />
+                    </FrameLayout>
+
 
                     <LinearLayout
                         android:layout_width="match_parent"

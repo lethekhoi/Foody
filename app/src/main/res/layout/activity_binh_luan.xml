@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:theme="@style/TextTheme"
+    tools:context=".View.BinhLuanActivity">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimaryDark">
+
+        <TextView
+            android:id="@+id/btnPost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:paddingRight="10dp"
+            android:text="@string/dang"
+            android:textColor="@color/colorAccent"
+            android:textSize="18sp" />
+    </androidx.appcompat.widget.Toolbar>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorBackgroundTrangChu"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTenQuanAn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingTop="5dp"
+            android:paddingRight="10dp"
+            android:textColor="@color/colorBlack"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtDiaChiQuanAn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:paddingBottom="5dp"
+            android:textSize="13sp" />
+    </LinearLayout>
+    <!--    <EditText-->
+    <!--        android:id="@+id/edEmailDN"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:layout_marginTop="15dp"-->
+    <!--        android:layout_marginBottom="15dp"-->
+    <!--        android:backgroundTint="@color/colorAccent"-->
+    <!--        android:drawableLeft="@drawable/ic_perm_identity_white_24dp"-->
+    <!--        android:drawablePadding="10dp"-->
+    <!--        android:ems="10"-->
+    <!--        android:hint="@string/email"-->
+    <!--        android:inputType="textPersonName"-->
+    <!--        android:textColor="@color/colorAccent"-->
+    <!--        android:textColorHint="@color/colorAccent" />-->
+    <EditText
+        android:id="@+id/edtTieuDe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000"
+        android:ems="10"
+        android:hint="@string/tieudebinhluan"
+        android:padding="10dp"
+        android:textColor="@drawable/custom_textview"
+        android:textColorLink="@color/colorPrimaryDark"
+        android:textSize="13sp" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorBackgroundTrangChu" />
+
+    <EditText
+        android:id="@+id/edtNoiDung"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="#00000000"
+        android:gravity="top"
+        android:hint="@string/noidungbinhluan"
+        android:padding="10dp"
+        android:textColor="@drawable/custom_textview"
+        android:textColorHighlight="@color/colorPrimaryDark"
+        android:textSize="13sp" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerViewHinhAnhDuocChon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:layout_gravity="center"
+        android:background="@color/colorBackgroundTrangChu"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <ImageButton
+            android:id="@+id/btnHinhAnh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorBackgroundTrangChu"
+            android:src="@drawable/ic_photo_camera_24px" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorBackgroundTrangChu"
+            android:src="@drawable/ic_star_rate_24px" />
+
+        <ImageButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorBackgroundTrangChu"
+            android:src="@drawable/ic_label_24px" />
+
+    </LinearLayout>
+
+</LinearLayout>

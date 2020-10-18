@@ -11,12 +11,16 @@ import androidx.core.widget.NestedScrollView;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.VideoView;
 
 import com.example.foody.Adapter.AdapterRecyclerBinhLuan;
 import com.example.foody.Controller.ChiTietQuanAnController;
@@ -61,7 +65,8 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
     DatabaseReference dataRoot;
     long giatoida, giatoithieu;
     LinearLayout khungTienIch;
-
+    Button btnBinhLuan;
+    VideoView videoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,6 +83,8 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
     }
 
     private void AnhXa() {
+        videoView = findViewById(R.id.videotrailer);
+        btnBinhLuan = findViewById(R.id.btnBinhLuan);
         khungWifi = findViewById(R.id.khungWifi);
         txtTenWifi = findViewById(R.id.tenWifi);
         txtMatKhauWifi = findViewById(R.id.matkhauwifi);
@@ -208,22 +215,52 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
         txtThoiGianMoCua.setText(quanAnModel.getGiomocua() + " - " + quanAnModel.getGiodongcua());
 
 
-        StorageReference storageHinhanh = FirebaseStorage.getInstance().getReference().child("hinhquanan").child(quanAnModel.getHinhquanan().get(0));
-        long ONE_MEGABYTE = 1024 * 1024;
-        storageHinhanh.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-            @Override
-            public void onSuccess(byte[] bytes) {
-                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                imgHinhQuanAn.setImageBitmap(bitmap);
+        if (quanAnModel.getVideogioithieu() != null) {
+            imgHinhQuanAn.setVisibility(View.GONE);
+            videoView.setVisibility(View.VISIBLE);
+            StorageReference storageReferenceVideo = FirebaseStorage.getInstance().getReference().child("video")
+                    .child(quanAnModel.getVideogioithieu());
+            storageReferenceVideo.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                @Override
+                public void onSuccess(Uri uri) {
+                    videoView.setVideoURI(uri);
+                    MediaController mediaController = new MediaController(ChiTietQuanAnActivity.this);
+                    videoView.setMediaController(mediaController);
+                    mediaController.setAnchorView(videoView);
+                    videoView.start();
+                }
+            });
+        } else {
+            imgHinhQuanAn.setVisibility(View.VISIBLE);
+            videoView.setVisibility(View.GONE);
+            //gán hình ảnh quán ăn khi video giới thiệu bằng null
+            StorageReference storageHinhanh = FirebaseStorage.getInstance().getReference().child("hinhquanan").child(quanAnModel.getHinhquanan().get(0));
+            long ONE_MEGABYTE = 1024 * 1024;
+            storageHinhanh.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+                @Override
+                public void onSuccess(byte[] bytes) {
+                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                    imgHinhQuanAn.setImageBitmap(bitmap);
 
-            }
-        });
+                }
+            });
+        }
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ChiTietQuanAnActivity.this);
         recyclerViewBinhLuan.setLayoutManager(layoutManager);
         AdapterRecyclerBinhLuan adapterRecyclerBinhLuan = new AdapterRecyclerBinhLuan(ChiTietQuanAnActivity.this, quanAnModel.getBinhLuanModelList());
         recyclerViewBinhLuan.setAdapter(adapterRecyclerBinhLuan);
         adapterRecyclerBinhLuan.notifyDataSetChanged();
         nestedScrollViewChiTiet.scrollTo(0, 0);
+
+
+        btnBinhLuan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent iBinhLuan = new Intent(ChiTietQuanAnActivity.this, BinhLuanActivity.class);
+                iBinhLuan.putExtra("quanan", quanAnModel);
+                startActivity(iBinhLuan);
+            }
+        });
 
     }
 
