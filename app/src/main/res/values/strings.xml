@@ -59,4 +59,5 @@
     <string name="noidungbinhluan">Viết trên 100 từ, đúng chính tả, ngôn từ văn hóa, không spam... để được duyệt điểm thưởng</string>
     <string name="vietbinhluan">Viết bình luận</string>
     <string name="done"><font color="#030bfc">"Xong"</font></string>
+    <string name="thucdon">Thực đơn</string>
 </resources>

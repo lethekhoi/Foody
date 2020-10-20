@@ -112,10 +112,10 @@
                         </ImageView>
 
                         <VideoView
-                            android:layout_gravity="center"
                             android:id="@+id/videotrailer"
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent"
+                            android:layout_gravity="center" />
                     </FrameLayout>
 
 
@@ -307,6 +307,8 @@
                 <include layout="@layout/layout_tinhnang_chitietquanan" />
                 <!--wifi-->
                 <include layout="@layout/layout_wifi_chitietquanan" />
+                <!--thuc don-->
+                <include layout="@layout/layout_thucdon_quanan" />
                 <!--list binh luan-->
                 <include layout="@layout/layout_binhluan_chitietquanan" />
 

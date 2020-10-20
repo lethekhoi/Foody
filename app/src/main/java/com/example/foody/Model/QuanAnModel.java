@@ -24,6 +24,15 @@ public class QuanAnModel implements Parcelable {
     DatabaseReference dataRoot;
     long luotthich;
     long giatoida;
+    List<ThucDonModel> thucDonModelList;
+
+    public List<ThucDonModel> getThucDonModelList() {
+        return thucDonModelList;
+    }
+
+    public void setThucDonModelList(List<ThucDonModel> thucDonModelList) {
+        this.thucDonModelList = thucDonModelList;
+    }
 
     public long getGiatoida() {
         return giatoida;

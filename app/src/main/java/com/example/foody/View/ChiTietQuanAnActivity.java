@@ -24,6 +24,7 @@ import android.widget.VideoView;
 
 import com.example.foody.Adapter.AdapterRecyclerBinhLuan;
 import com.example.foody.Controller.ChiTietQuanAnController;
+import com.example.foody.Controller.ThucDonController;
 import com.example.foody.Model.QuanAnModel;
 import com.example.foody.Model.TienIchModel;
 import com.example.foody.R;
@@ -55,7 +56,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
     TextView txtTenQuanAnChiTiet, txtDiaChiQuanAnChiTiet, txtTongAnh, txtTongBinhLuan,
             txtThoiGianMoCua, txtDongMoCua, txtGioiHanGia, txtTenWifi, txtMatKhauWifi;
     ImageView imgHinhQuanAn;
-    RecyclerView recyclerViewBinhLuan;
+    RecyclerView recyclerViewBinhLuan, recyclerViewThucDon;
     NestedScrollView nestedScrollViewChiTiet;
     GoogleMap googleMap;
     LinearLayout khungWifi;
@@ -67,6 +68,7 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
     LinearLayout khungTienIch;
     Button btnBinhLuan;
     VideoView videoView;
+    ThucDonController thucDonController;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -83,6 +85,8 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
     }
 
     private void AnhXa() {
+        recyclerViewThucDon = findViewById(R.id.recyclerViewThucDon);
+        thucDonController = new ThucDonController();
         videoView = findViewById(R.id.videotrailer);
         btnBinhLuan = findViewById(R.id.btnBinhLuan);
         khungWifi = findViewById(R.id.khungWifi);
@@ -261,6 +265,9 @@ public class ChiTietQuanAnActivity extends AppCompatActivity implements OnMapRea
                 startActivity(iBinhLuan);
             }
         });
+
+
+        thucDonController.GetDanhSachThucDonTheoMaQuanAn(ChiTietQuanAnActivity.this, quanAnModel.getMaquanan(), recyclerViewThucDon);
 
     }
 
